@@ -29,7 +29,7 @@ We  train the model on a dataset of 10,000 human readable dates and their equiva
  
 ![NMT model](images/attn_model.png)
 
-One attention step is shown below, where the attention variables are calcuated used to compute the context variablefor each timestep
+One attention step is shown below, where the attention variables are calcuated used to compute the context variable for each timestep
 
 ![attention mechanism](images/attn_mechanism.png)
 
