@@ -1,5 +1,5 @@
 # Attention mechanism: Neural machine translation
-We will build a neural machine translation (NMT) model to translate human-readable dates (e.g. 25th of June, 2009) into machine-readable dates (i.e. 2009-06-25). We will do this using an attention model, one of the most sophisticated sequence-to-sequence models.
+We build a neural machine translation (NMT) model to translate human-readable dates (e.g. 25th of June, 2009) into machine-readable dates (i.e. 2009-06-25). We will do this using an attention model, one of the most sophisticated sequence-to-sequence models.
 
 The model we build here could be used to translate from one language to another, such as translating from English to Hindi.
 However, language translation requires massive datasets and usually takes days of training on GPUs, so we will perform a simpler *date translation* task.
@@ -8,10 +8,9 @@ and translate them into standardized, machine readable dates in the YYYY-MM-DD f
 
 I did this project in the [Sequence Models](https://www.coursera.org/learn/nlp-sequence-models) course as part of the [Deep Learning Specialization](https://www.coursera.org/specializations/deep-learning).
 
-We will train the model on a dataset of 10,000 human readable dates and their equivalent, standardized, machine readable dates. Let's run the following cells to load the dataset and print some examples.
 
 ## Dataset
-We generate 10,000 examples of pairs of human-readable and machine-readable dates and use them for training. Some examples are:
+We  train the model on a dataset of 10,000 human readable dates and their equivalent, standardized, machine readable dates. A list of 10 examples are:
 ```
 [('3 april 1974', '1974-04-03'),
  ('friday september 21 2018', '2018-09-21'),
@@ -26,10 +25,38 @@ We generate 10,000 examples of pairs of human-readable and machine-readable date
  ```
  
  ## Neural machine translation network
- The network model
- <table>
-<td> 
-<img src="images/attn_model.png" style="width:500;height:500px;"> <br>
-</td> 
-<td> 
-<img src="images/attn_mechanism.png" style="width:500;height:500px;"> <br>
+ The network model is shown below:
+ 
+![NMT model](images/attn_model.png)
+
+One attention step is shown below, where the attention variables are calcuated used to compute the context variablefor each timestep
+
+![attention mechanism](images/attn_mechanism.png)
+
+## Translation results
+Some examples of the translation results by the model:
+```
+source: 3 May 1979
+output: 1979-05-33 
+
+source: 5 April 09
+output: 2009-04-05 
+
+source: 21th of August 2016
+output: 2016-08-20 
+
+source: Tue 10 Jul 2007
+output: 2007-07-10 
+
+source: Saturday May 9 2018
+output: 2018-05-09 
+
+source: March 3 2001
+output: 2001-03-03 
+
+source: March 3rd 2001
+output: 2001-03-03 
+
+source: 1 March 2001
+output: 2001-03-01 
+```
